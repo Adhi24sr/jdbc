@@ -1,0 +1,28 @@
+package pck;
+import java.sql.*;
+
+public class Create {
+	public static void main(String args[])
+	{
+		Dbconn d= new Dbconn();
+		Connection con=  d.db_Connect();
+		try
+		{
+			String q="insert into employees (email_id,first_name,last_name) values(?,?,?)";
+			PreparedStatement ps = con.prepareStatement(q);
+			ps.setString(1, "v@gmail.com");
+			ps.setString(2, "Vnn");
+			ps.setString(3, "hgjj");
+			
+			int i= ps.executeUpdate();
+			if(i!=0)
+			{
+				System.out.println("Registered Successfully");
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+}
