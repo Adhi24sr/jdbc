@@ -1,0 +1,26 @@
+package pck;
+import java.sql.*;
+
+public class Read {
+	public static void main(String[] args ) {
+		Dbconn d= new Dbconn();
+		Connection con=  d.db_Connect();
+		try
+		{
+			
+			String query = "select * from employees";
+			Statement s=con.createStatement();
+			ResultSet rs=s.executeQuery(query);
+			while(rs.next()) 
+			{
+				System.out.println(rs.getString("email_id"));
+				System.out.println(rs.getString("first_name"));
+				System.out.println(rs.getString("last_name"));
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+	}
+	
+}
+}
