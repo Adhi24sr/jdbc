@@ -1,0 +1,26 @@
+package pck;
+import java.sql.*;
+
+public class Delete {
+	public static void main(String args[])
+	{
+		Dbconn d= new Dbconn();
+		Connection con=  d.db_Connect();
+		try
+		{
+			String q="delete from  employees where id=1";
+			PreparedStatement ps = con.prepareStatement(q);
+			
+			
+			int i= ps.executeUpdate();
+			if(i!=0)
+			{
+				System.out.println("Deleted Successfully");
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+}
