@@ -1,0 +1,26 @@
+package pck;
+import java.sql.*;
+
+public class Update {
+	public static void main(String args[])
+	{
+		Dbconn d= new Dbconn();
+		Connection con=  d.db_Connect();
+		try
+		{
+			String q="update employees set email_id=?, first_name=? where id=2";
+			PreparedStatement ps = con.prepareStatement(q);
+			ps.setString(1,"ddss@gmail.com");
+			ps.setString(2,"arun");
+			int i= ps.executeUpdate();
+			if(i!=0)
+			{
+				System.out.println("updated Successfully");
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+}
